@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Css/AboutUs.css">
+</head>
+<body>
+    <c:forEach var="user" items="${loggedInUser}">
+    <section class="box" id="section2">
+        <div class="card" style="float: left; left: 230px;">
+          <figure class="photo">
+            <img src="/AboutUsImages/AboutUs-Tika.jpg" alt="Tika Image" style="cursor: pointer;"/>
+          </figure>
+          <figcaption class="fig">
+            <h2>${user.username}</h2>
+            <h4>${user.userEmail}</h4>
+            <h3 style="padding: 20px 20px 14px">${user.userDob}</h3>
+            <h4>${user.userPhoneNumber}</h4>
+            <h4>${user.userGender}</h4>
+            <span class="icon">
+              <a href=""><img src="/AboutUsImages/gmail.png" alt=""></a>
+              <a href=""><img src="/AboutUsImages/facebook.png" alt=""></a>
+              <a href=""><img src="/AboutUsImages/instagram.png" alt=""></a>
+              <a href=""><img src="/AboutUsImages/phone-call.png" alt=""></a>
+            </span>
+            <br />
+            <form action="<%=request.getContextPath()%>/UserEdit" method="post">
+				<input type="hidden" name="userID" value="${user.userID}">
+				<button type="submit" class="btn-btn">Edit</button>
+			</form>
+          </figcaption>
+        </div>
+        </section>
+    </c:forEach>
+</body>
+</html>
